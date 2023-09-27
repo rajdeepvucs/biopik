@@ -3,46 +3,56 @@ import Sidebar from '../../Common/SideNav';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Footer from '../../Common/Footer';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
+
+
 
 export default function CustomerView() {
-  
-  return( 
-  <>
-    <Box sx={{ display: 'flex' ,backgroundColor: '#84ffff',}}>
-    <Sidebar />
-    <h1>Customer</h1>
-    <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-      
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
-       <Footer />
+  const rows: any = [
+    { id: 1, name: 'John Doe', age: 30, city: 'New York' },
+    { id: 2, name: 'Jane Smith', age: 25, city: 'Los Angeles' },
+    { id: 3, name: 'Bob Johnson', age: 35, city: 'Chicago' },
+  ];
+  const handleSaveClick = (row:any) => {
+   
+  };
+  return (
+    <>
+      <Box sx={{ display: 'flex', backgroundColor: '#84ffff' }}>
+        <Sidebar />
+        <h1>Customer</h1>
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <TableContainer component={Paper}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>ID</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Age</TableCell>
+                  <TableCell>City</TableCell>
+                  <TableCell>Action</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row:any) => (
+                  <TableRow key={row.id}>
+                    <TableCell>{row.id}</TableCell>
+                    <TableCell>{row.name}</TableCell>
+                    <TableCell>{row.age}</TableCell>
+                    <TableCell>{row.city}</TableCell>
+                    <TableCell>
+                    <Button variant="contained" onClick={() => handleSaveClick(row)}>
+                         Edit
+                        </Button></TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+
+          <Footer />
+        </Box>
       </Box>
-    </Box>
     </>
   );
 }
