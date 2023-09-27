@@ -1,10 +1,6 @@
-import React from 'react'
-import CustomerView from './CustomerView'
+import React from "react";
+import CustomerView from "./CustomerView";
 
 export default function Customer() {
-  return (
-    <>
-    
-    <CustomerView /></>
-  )
+  return <CustomerView />;
 }
