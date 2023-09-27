@@ -227,7 +227,7 @@ const Login: React.FC = () => {
                             <span
                               style={{ color: '#beb4fb', cursor: 'pointer' }}
                               onClick={() => {
-                                navigate('/register');
+                                navigate('loginmain/register');
                               }}
                             >
                               Create an Account
