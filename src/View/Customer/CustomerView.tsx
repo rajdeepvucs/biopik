@@ -14,6 +14,7 @@ import {
   Button,
   Grid,
 } from "@mui/material";
+import "./customer.css";
 
 export default function CustomerView() {
   const rows: any = [
@@ -76,8 +77,9 @@ export default function CustomerView() {
       <Grid xs={2} style={{ backgroundColor: "blue", height: 200 }} item>
         Tite
       </Grid>
-      <Grid xs={2} style={{ backgroundColor: "blue", height: 200 }} item>
-        Tite
+      <Grid xs={2} className="red" style={{ height: 200 }} item>
+        <div style={{ background: "black" }}>Tite</div>
+        <Typography>titele</Typography>
       </Grid>
     </Grid>
   );
