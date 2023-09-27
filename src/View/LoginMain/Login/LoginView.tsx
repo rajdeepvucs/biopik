@@ -17,6 +17,8 @@ import Avatar from '@mui/material/Avatar';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { UserLogin } from '../../../Service/userService';
+import bg from '../Signup/bg/backimg.jpg';
+import bgimg from '../Signup/bg/login.png'
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -107,7 +109,7 @@ const Login: React.FC = () => {
       </Snackbar>
       <div
         style={{
-          backgroundImage: `url(https://i.pinimg.com/1200x/45/07/fe/4507fea2b1e03827e039192630c252c2.jpg)`,
+          backgroundImage: `url(${bg})`,
           backgroundSize: 'cover',
           height: '100vh',
           color: '#f5f5f5',
@@ -118,7 +120,7 @@ const Login: React.FC = () => {
             <Grid item xs={12} sm={12} lg={6}>
               <Box
                 style={{
-                  backgroundImage: `url(https://i.pinimg.com/1200x/45/07/fe/4507fea2b1e03827e039192630c252c2.jpg)`,
+                  backgroundImage: `url(${bgimg})`,
                   backgroundSize: 'cover',
                   marginTop: '40px',
                   marginLeft: '15px',

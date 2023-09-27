@@ -66,8 +66,8 @@ export default function Register() {
 
   const onSubmit = (data:any) => {
     setOpen(false);
-    console.log(data); // Handle your form submission here
-    navigate('/'); // Redirect to the login page or your desired route
+    console.table(data); 
+    navigate('/'); 
   };
 
   const handleClose = () => {
