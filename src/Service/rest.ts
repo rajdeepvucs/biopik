@@ -1,6 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
-import { useSelector, useDispatch } from 'react-redux'; // change
-import { setToken as setTokenAction } from '../Store/tokenSlice'; // change
+import axios, { AxiosRequestConfig, AxiosInstance } from "axios";
 
 export default class RestService {
   client: AxiosInstance;
@@ -9,12 +7,12 @@ export default class RestService {
     this.client = axios.create(config);
     this.client.interceptors.request.use(
       async (config) => {
-        const token="123";
-       // const token = useSelector((state:any) => state.token); // change here
+        const token = "123";
+        // const token = useSelector((state:any) => state.token); // change here
         if (token && !!config.headers) {
-          config.headers['Authorization'] = 'Bearer ' + token;
+          config.headers["Authorization"] = "Bearer " + token;
         }
-        console.log('Request: ', config.url, config.headers?.Authorization);
+        console.log("Request: ", config.url, config.headers?.Authorization);
         return config;
       },
       (error) => {
@@ -26,9 +24,9 @@ export default class RestService {
       async (response) => {
         if (response?.data?.token) {
           //const dispatch = useDispatch(); // Get the dispatch function from Redux
-        //  dispatch(setTokenAction(response?.data?.token)); // Dispatch action to set token in Redux store
-          this.client.defaults.headers.common['Authorization'] =
-            'Bearer ' + response?.data?.token;
+          //  dispatch(setTokenAction(response?.data?.token)); // Dispatch action to set token in Redux store
+          this.client.defaults.headers.common["Authorization"] =
+            "Bearer " + response?.data?.token;
         }
         return response;
       },
@@ -44,10 +42,10 @@ export default class RestService {
         ) {
           originalRequest._retry = true;
           if (error?.response?.data?.token) {
-           // const dispatch = useDispatch(); // Get the dispatch function from Redux
-           // dispatch(setTokenAction(error?.response?.data?.token));
-            this.client.defaults.headers.common['Authorization'] =
-            'Bearer '+ error.response?.data?.token;
+            // const dispatch = useDispatch(); // Get the dispatch function from Redux
+            // dispatch(setTokenAction(error?.response?.data?.token));
+            this.client.defaults.headers.common["Authorization"] =
+              "Bearer " + error.response?.data?.token;
             await new Promise((resolve: any) => setTimeout(resolve, 500));
             return this.client(originalRequest);
           }
