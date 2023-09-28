@@ -31,15 +31,16 @@ export default function CustomerView() {
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <TableContainer component={Paper}>
             <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>ID</TableCell>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Age</TableCell>
-                  <TableCell>City</TableCell>
-                  <TableCell>Action</TableCell>
-                </TableRow>
-              </TableHead>
+            <TableHead>
+  <TableRow>
+    <TableCell sx={{ fontWeight: 'bold', fontSize: 18 }}>ID</TableCell>
+    <TableCell sx={{ fontWeight: 'bold', fontSize: 18 }}>Name</TableCell>
+    <TableCell sx={{ fontWeight: 'bold', fontSize: 18 }}>Age</TableCell>
+    <TableCell sx={{ fontWeight: 'bold', fontSize: 18 }}>City</TableCell>
+    <TableCell sx={{ fontWeight: 'bold', fontSize: 18 }}>Action</TableCell>
+  </TableRow>
+</TableHead>
+
               <TableBody>
                 {rows.map((row:any) => (
                   <TableRow key={row.id}>

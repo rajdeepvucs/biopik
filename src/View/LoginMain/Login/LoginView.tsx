@@ -49,13 +49,13 @@ const centerStyle = {
   left: "37%",
 };
 
-const Login: React.FC = () => {
+const LoginView: React.FC<LoginViewPorps> = ({ Login }) => {
   const [open, setOpen] = useState(false);
   const [remember, setRemember] = useState(false);
   const vertical = "top";
   const horizontal = "right";
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+ 
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -66,13 +66,15 @@ const Login: React.FC = () => {
     const customerData = {
       customer_phone: customer_phone,
       customer_password: customer_password,
+      navigate:navigate
     };
     try {
-      const response = await UserLogin(customerData);
-      console.log("from server", response);
+       Login(customerData);
+      // const response = await UserLogin(customerData);
+      // console.log("from server", response);
       // const responseData = await response.json();
       // dispatch(loginSuccess(response));
-      navigate("/customer");
+      //navigate("/customer");
     } catch (error) {
       setOpen(true);
       console.error("Login error:", error);
@@ -255,5 +257,8 @@ const Login: React.FC = () => {
     </>
   );
 };
-
-export default Login;
+interface LoginViewPorps {
+  navigation?: any;
+  Login: (data: any) => void;
+}
+export default LoginView;

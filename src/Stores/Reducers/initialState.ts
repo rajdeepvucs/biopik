@@ -8,6 +8,10 @@ const InitialState: StoreState = {
     count: 0,
     message: "",
   },
+  user: {
+    user_detail: undefined,
+    
+  },
 };
 
 export default InitialState;
