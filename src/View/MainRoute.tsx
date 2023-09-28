@@ -13,8 +13,6 @@ export default function MainRoute() {
   
 
   return (
-    <>
-    
     <Routes>
     <Route path="/"  element={<Navigate to= "/loginmain/login" />} />
       <Route path="/loginmain/login"  element={<Login/>} />
@@ -26,7 +24,5 @@ export default function MainRoute() {
       <Route path="*"  element={<ErrorPage404/>} />
  
     </Routes>
-    
-    </>
-  )
+  );
 }

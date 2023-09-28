@@ -1,20 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import MainRoute from './View/MainRoute';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './Store/store'
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import MainRoute from "./View/MainRoute";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 function App() {
   return (
-    <>
-     <Provider store={store}> 
     <BrowserRouter>
-    <MainRoute />
+      <MainRoute />
     </BrowserRouter>
-    </Provider>
-    </>
-    
   );
 }
 
