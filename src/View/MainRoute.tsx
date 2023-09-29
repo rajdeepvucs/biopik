@@ -8,6 +8,8 @@ import Customer from './Customer'
 import Login from './LoginMain/Login'
 import ErrorPage404 from './ErrorPage/ErrorPage404'
 import Protected from '../Protected/Protected'
+import CommodityEdit from './Commodity/CommodityEdit'
+import SingleCommodity from './Commodity/SingleCommodity'
 
 export default function MainRoute() {
   
@@ -21,6 +23,8 @@ export default function MainRoute() {
       <Route path="/commodity/*"  element={<Commodity/>} />
       <Route path="/customer/*"  element={<Customer/>} />
       <Route path="/order/*"  element={<Order/>} />
+      <Route path="/commodityedit/*"  element={<CommodityEdit/>} />
+      <Route path="/singlecommodity/*"  element={<SingleCommodity/>} />
       <Route path="*"  element={<ErrorPage404/>} />
  
     </Routes>

@@ -6,7 +6,8 @@ export default function Protected(props:any) {
     const navigate=useNavigate();
     useEffect(()=>{
         let login=localStorage.getItem('login');
-        if(!login){
+        console.log("login",login)
+        if(login){
             navigate('/');
         }
     })

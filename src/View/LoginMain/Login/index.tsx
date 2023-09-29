@@ -3,16 +3,17 @@ import LoginView from './LoginView'
 import { StoreState } from '../../../Models/reduxModel';
 import { LoginAction } from '../../../Stores/Actions/userAction';
 import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
-const Login = ({LoginAction}:LoginPorps) => {
+
+const Login = ({LoginAction,user}:LoginPorps) => {
   
-  const navigation = useNavigate();
+
   const Login = async(data: any) => {
 
-console.log("From login",data)
+
     await LoginAction(data)
-    
+    console.log("user",user);
+  
   };
   return <LoginView  Login={Login} />;
 };
@@ -20,7 +21,7 @@ console.log("From login",data)
 
 const mapStateToProps = (state: StoreState, ownProps: any) => {
   return {
-   // user: state.user.user_detail,
+    user: state.user.user_detail,
   };
 };
 const mapDispatchToProps = {
@@ -30,7 +31,7 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
 interface LoginPorps {
   
-  
+  user?:any;
   LoginAction?: any;
 }
 

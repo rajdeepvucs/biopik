@@ -32,7 +32,8 @@ export const LoginAction = (payload: any) => {
           dispatch(LoginSuccess(response.data));
          
         }
-      }).then(()=>navigate("/customer"))
+      }).then(()=>{localStorage.setItem("login", "true");
+        navigate("/customer")})
       
       .catch(error => {
         if (error?.response?.status === 403) {
