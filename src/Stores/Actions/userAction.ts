@@ -32,7 +32,7 @@ export const LoginAction = (payload: any) => {
           dispatch(LoginSuccess(response.data));
          
         }
-      }).then(()=>{localStorage.setItem("login", "true");
+      }).then(()=>{//localStorage.setItem("login", "true");
         navigate("/customer")})
       
       .catch(error => {
