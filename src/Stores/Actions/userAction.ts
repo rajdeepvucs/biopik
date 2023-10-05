@@ -2,7 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import { UserLogin} from '../../Service/userService';
 import {ApiCallErrorAction, BeginApiCallAction} from './apiStatusActions';
-
+import Cookies from 'js-cookie';
 export enum UserActionTypes {
   Login_Success_Action = '[USER] Login Success Action',
   Logout_Success_Action = '[USER] Logout Success Action',
@@ -14,8 +14,8 @@ export const LoginAction = (payload: any) => {
      const {customer_password,customer_phone,navigate}=payload;
      //console.log("first",customer_password)
      const customerData = {
-      customer_phone: customer_phone,
-      customer_password: customer_password,
+      contact: customer_phone,
+      password: customer_password,
       
     };
      
@@ -26,6 +26,7 @@ export const LoginAction = (payload: any) => {
     return UserLogin(customerData)
       .then(response => {
         if (response.status != 200) {
+          
           dispatch(ApiCallErrorAction(response.data));
         } else {
            console.log("from action",response.data)
@@ -33,6 +34,9 @@ export const LoginAction = (payload: any) => {
          
         }
       }).then(()=>{//localStorage.setItem("login", "true");
+        const authToken = Cookies.get('admintoken');
+        console.log("admin token",authToken)
+        console.log("allll",Cookies.get)
         navigate("/customer")})
       
       .catch(error => {
@@ -46,7 +50,10 @@ export const LoginAction = (payload: any) => {
           
           dispatch(UserLogoutSuccess());
         } else if (error?.response?.status === 500) {
+          console.log("wrong")
+          window.alert("Wrong Credential")
           dispatch(
+            
             ApiCallErrorAction({
               errorCode: '',
               message: error?.response?.data?.message,

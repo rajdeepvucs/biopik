@@ -4,23 +4,30 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../../Common/SideNav";
 import { deepPurple } from "@mui/material/colors";
-
+import Footer from "../../Common/Footer";
+interface Commodity {
+  id: number;
+  title: string;
+  type_id: number;
+  image_id: number;
+}
 const SingleCommodity = () => {
  
  const { id } = useParams();
- const [student, setStudent] = useState([]);
+ const [singlecommodity, setSinglecommodity] = useState<Commodity>();
 
  useEffect(() => {
-  async function getStudent() {
+  async function getSinglecommodity() {
    try {
-    const student = await axios.get(`http://localhost:3333/students/${id}`)
-    // console.log(student.data);
-    setStudent(student.data);
+    const response = await axios.get(`http://192.168.1.4:3000/api/v1/singlecommodity/${id}`)
+    
+    setSinglecommodity(response.data);
    } catch (error) {
     console.log("Something is Wrong");
+    
    }
   }
-  getStudent();
+  getSinglecommodity();
  }, [id])
 
  function handleClick() {
@@ -30,7 +37,9 @@ const SingleCommodity = () => {
   <>
   <Box sx={{ display: 'flex', backgroundColor: '#84ffff' }}>
         <Sidebar />
-   
+        <Box sx={{textAlign:"center" , backgroundColor: "deepPurple",p:"2" }}>
+      
+      
    <Grid item xs={12} md={6}>
   <Box sx={{ textAlign:"center", p:2, mb:2, backgroundColor:"orange"}}>
       <Typography variant="h4"> Commodity List</Typography>
@@ -40,11 +49,11 @@ const SingleCommodity = () => {
   <Table sx={{ minWidth: 650, backgroundColor: deepPurple }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell align="center"sx={{ backgroundColor: 'purple', color: 'white' }}>Commodity Id</TableCell>
+            <TableCell align="center"sx={{ backgroundColor: 'purple', color: 'white' }}>Commodity Name</TableCell>
+            <TableCell align="center"sx={{ backgroundColor: 'purple', color: 'white' }}>Commodity Type Id</TableCell>
+            <TableCell align="center"sx={{ backgroundColor: 'purple', color: 'white' }}>Image Id</TableCell>
+            
           </TableRow>
         </TableHead>
         <TableBody>
@@ -54,11 +63,11 @@ const SingleCommodity = () => {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {"row.name"}
+                {singlecommodity?.id}
               </TableCell>
-              <TableCell align="right">{"row.calories"}</TableCell>
-              <TableCell align="right">{"row.fat"}</TableCell>
-              <TableCell align="right">{"row.carbs"}</TableCell>
+              <TableCell align="center">{singlecommodity?.title}</TableCell>
+              <TableCell align="center">{singlecommodity?.type_id}</TableCell>
+              <TableCell align="center">{singlecommodity?.image_id}</TableCell>
               
             </TableRow>
       
@@ -66,6 +75,8 @@ const SingleCommodity = () => {
       </Table>
     </TableContainer>
   </Grid>
+  <Footer />
+   </Box>
    </Box>
   </>
  )

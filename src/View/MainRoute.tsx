@@ -10,6 +10,7 @@ import ErrorPage404 from './ErrorPage/ErrorPage404'
 import Protected from '../Protected/Protected'
 import CommodityEdit from './Commodity/CommodityEdit'
 import SingleCommodity from './Commodity/SingleCommodity'
+import Addcommodity from './Commodity/Addcommodity'
 
 export default function MainRoute() {
   
@@ -23,8 +24,10 @@ export default function MainRoute() {
       <Route path="/commodity/*"  element={<Commodity/>} />
       <Route path="/customer/*"  element={<Customer/>} />
       <Route path="/order/*"  element={<Order/>} />
-      <Route path="/commodityedit/*"  element={<CommodityEdit/>} />
-      <Route path="/singlecommodity/*"  element={<SingleCommodity/>} />
+      <Route path="/commodityedit/:id"  element={<CommodityEdit/>} />
+      <Route path="/singlecommodity/:id"  element={<SingleCommodity/>} />
+      <Route path="/addcommodity"  element={<Addcommodity/>} />
+      <Route path="/deletecommodity/:id"  element={<Commodity/>} />
       <Route path="*"  element={<ErrorPage404/>} />
  
     </Routes>

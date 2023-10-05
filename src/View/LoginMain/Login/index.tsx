@@ -20,6 +20,7 @@ const Login = ({LoginAction,user}:LoginPorps) => {
 
 
 const mapStateToProps = (state: StoreState, ownProps: any) => {
+  console.log("first",state)
   return {
     user: state.user.user_detail,
   };
